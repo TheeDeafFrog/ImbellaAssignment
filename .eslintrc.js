@@ -15,7 +15,7 @@ module.exports = {
         'version': 'detect',
       }
     },
-    'ignorePatterns': ['\\.*', 'assets/', 'node_modules/', 'web-build', 'babel.config.js'],
+    'ignorePatterns': ['\\.*', 'assets/', 'node_modules/', 'web-build', '*.config.js'],
     'parser': '@typescript-eslint/parser',
     'parserOptions': {
         'ecmaVersion': 'latest',

@@ -12,7 +12,8 @@
     "clean:web": "rd /s/q web-build",
     "s3:clean": "aws s3 rm s3://imbella.kevinr.net --recursive",
     "s3:copy": "aws s3 cp web-build/ s3://imbella.kevinr.net --recursive",
-    "deploy:web": "npm run clean:web && npm run build:web && npm run s3:clean && npm run s3:copy"
+    "deploy:web": "npm run clean:web && npm run build:web && npm run s3:clean && npm run s3:copy",
+    "test": "jest"
   },
   "dependencies": {
     "@expo/webpack-config": "^18.0.1",
@@ -28,11 +29,15 @@
   },
   "devDependencies": {
     "@babel/core": "^7.20.0",
+    "@testing-library/react-native": "^12.0.1",
+    "@types/jest": "^29.5.0",
     "@typescript-eslint/eslint-plugin": "^5.56.0",
     "@typescript-eslint/parser": "^5.56.0",
     "eslint": "^8.36.0",
     "eslint-plugin-react": "^7.32.2",
-    "eslint-plugin-react-native": "^4.0.0"
+    "eslint-plugin-react-native": "^4.0.0",
+    "jest": "^29.5.0",
+    "jest-environment-jsdom": "^29.5.0"
   },
   "private": true
 }
