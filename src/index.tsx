@@ -1,4 +1,4 @@
-import React, {useContext, useState} from 'react';
+import React, {useState} from 'react';
 import { StoryblokClientContext } from './contexts';
 import StoryblokClient from 'storyblok-js-client';
 import { IdType } from './interfaces/ComponentIdentification';
@@ -34,7 +34,7 @@ export default function RootComponent() {
         // TODO: Set URL to slug
         // TODO: Pull to refresh
 
-        return
+        return;
     }
 
     return (

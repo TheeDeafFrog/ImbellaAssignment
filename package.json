@@ -7,6 +7,7 @@
     "android": "expo start --android",
     "ios": "expo start --ios",
     "web": "expo start --web",
+    "fix": "eslint --fix .",
     "build:web": "expo export:web",
     "clean:web": "rd /s/q web-build",
     "s3:clean": "aws s3 rm s3://imbella.kevinr.net --recursive",
@@ -15,6 +16,7 @@
   },
   "dependencies": {
     "@expo/webpack-config": "^18.0.1",
+    "@types/react": "~18.0.27",
     "expo": "~48.0.9",
     "expo-status-bar": "~1.4.4",
     "react": "18.2.0",
@@ -22,11 +24,15 @@
     "react-native": "0.71.4",
     "react-native-web": "~0.18.10",
     "storyblok-js-client": "^5.9.0",
-    "typescript": "^4.9.4",
-    "@types/react": "~18.0.27"
+    "typescript": "^4.9.4"
   },
   "devDependencies": {
-    "@babel/core": "^7.20.0"
+    "@babel/core": "^7.20.0",
+    "@typescript-eslint/eslint-plugin": "^5.56.0",
+    "@typescript-eslint/parser": "^5.56.0",
+    "eslint": "^8.36.0",
+    "eslint-plugin-react": "^7.32.2",
+    "eslint-plugin-react-native": "^4.0.0"
   },
   "private": true
 }

@@ -1,4 +1,3 @@
-import React from 'react';
 import { BaseBlock } from '../../interfaces/BaseBlock';
 import mapBlockToComponent from '../../util/componentMap';
 

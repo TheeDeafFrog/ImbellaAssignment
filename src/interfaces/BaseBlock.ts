@@ -1,4 +1,4 @@
 export interface BaseBlock {
-    "_uid": string;
-    "component": string;
+    '_uid': string;
+    'component': string;
 }

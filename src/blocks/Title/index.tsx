@@ -16,5 +16,5 @@ export function Title(props: TitleProps) {
         <Text style={styles.subTitle}>
             {props.subtitle}
         </Text>
-    </ScrollView>
+    </ScrollView>;
 }

@@ -1,8 +1,10 @@
 import React from 'react';
 import {Text} from 'react-native';
 
-export function ProductList(props) {
+export function ProductList() {
     return <Text> 
         ProductList
-    </Text>
+        aeuo
+            oeu
+    </Text>;
 }
