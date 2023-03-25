@@ -1,5 +1,5 @@
-import React, {useState} from 'react';
-import { StoryblokClientContext } from './contexts';
+import React, {useContext, useState} from 'react';
+import { StoryblokBridgeInstanceContext, StoryblokClientContext } from '../contexts';
 import StoryblokClient from 'storyblok-js-client';
 import { IdType } from './interfaces/ComponentIdentification';
 import { fetchComponent } from './util/fetchComponent';
@@ -35,10 +35,16 @@ export default function RootComponent() {
         });
 
         // TODO: Proper Spinner
-        // TODO: Set URL to slug
         // TODO: Pull to refresh
 
         return;
+    }
+
+    const storyblokBridgeInstance = useContext(StoryblokBridgeInstanceContext);
+    if (storyblokBridgeInstance) {
+        storyblokBridgeInstance.on('input', (event) => {
+            setStory(event.story);
+        });
     }
 
     return (
