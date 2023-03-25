@@ -10,18 +10,11 @@ export const SAMPLE_STORY = {
             'component': 'Page',
             'pageContent': [
                 {
-                    '_uid': '9709c334-b7dd-49c9-afd2-774ca2050b54',
-                    'title': 'The Store',
-                    'subtitle': 'Proceed with caution',
-                    'component': 'Title'
-                },
-                {
                     '_uid': '69f8886f-3947-4313-bcaf-a018d6fc5413',
-                    'Title': '',
-                    'products': [
-                        '4dd52b72-4b4b-4dc8-970f-0cc3fece09c4'
-                    ],
-                    'component': 'ProductList'
+                    'text': 'hello',
+                    'variant': 'display',
+                    'size': 'small',
+                    'component': 'GenericText'
                 }
             ]
         },

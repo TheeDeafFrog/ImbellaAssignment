@@ -1,2 +1,2 @@
 export {ProductList} from './ProductList';
-export {Title} from './Title';
+export {GenericText} from './GenericText';

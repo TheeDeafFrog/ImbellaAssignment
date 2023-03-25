@@ -8,7 +8,7 @@ interface PageProps extends BaseBlock {
 }
 
 export function Page(props: PageProps): React.ReactElement {
-    return <View>
+    return <View testID='page'>
         {props.pageContent.map((block) => mapBlockToComponent(block))}
     </View>;
 }
