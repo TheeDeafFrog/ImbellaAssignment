@@ -1,13 +1,37 @@
 import React from 'react';
-import { Text } from 'react-native';
+import { View, Image } from 'react-native';
+import { Text } from 'react-native-paper';
 import { BaseBlock } from '../../interfaces/BaseBlock';
+import Markdown from '@jonasmerlin/react-native-markdown-display';
 
-interface ProductProps extends BaseBlock {
+export interface ProductProps extends BaseBlock {
     title: string;
+    subtitle: string;
+    description: string;
+    image: {
+        filename: string;
+        [key: string]: unknown
+    }
 }
 
 export function Product(props: ProductProps) {
-    return <Text>
-        {props.title}
-    </Text>;
+    return <View testID='product'>
+        <Text variant="headlineLarge">
+            {props.title}
+        </Text>
+        <Text variant="titleLarge">
+            {props.subtitle}
+        </Text>
+        <Image 
+            source={{
+                uri: props.image.filename
+            }}
+        />
+        {/* <Markdown>
+            {props.description}
+        </Markdown> */}
+        <Text>
+            {props.description}
+        </Text>
+    </View>;
 }

@@ -1,5 +1,7 @@
 export enum IdType {
     path,
+    uid,
+    uuid,
 }
 
 export interface ComponentIdentification {
