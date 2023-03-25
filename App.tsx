@@ -1,7 +1,9 @@
 import React, {useState} from 'react';
 import RootComponent from './src';
 import { loadStoryBlokBridge } from './loadStoryblokBridge';
-import { StoryblokBridgeInstanceContext, StoryblokDraftMode } from './contexts';
+import { StoryblokBridgeInstanceContext, StoryblokDraftMode, StoryblokClientContext } from './contexts';
+import StoryblokClient from 'storyblok-js-client';
+import {Provider as PaperProvider} from 'react-native-paper';
 
 export default function App() {
 
@@ -24,11 +26,19 @@ export default function App() {
             setStoryblokDraftMode(true);
         });
     });
+
+    const storyblokClient = new StoryblokClient({
+        accessToken: 'xC7sv2LJmqH3mYQsjENw3Att'
+    });
     
     return (
         <StoryblokBridgeInstanceContext.Provider value={storyblokBridgeInstance}>
             <StoryblokDraftMode.Provider value={storyblokDraftMode}>
-                <RootComponent/>
+                <StoryblokClientContext.Provider value={storyblokClient}>
+                    <PaperProvider theme={{version: 3, dark: true}}>
+                        <RootComponent/>
+                    </PaperProvider>
+                </StoryblokClientContext.Provider>
             </StoryblokDraftMode.Provider>
         </StoryblokBridgeInstanceContext.Provider>
     );

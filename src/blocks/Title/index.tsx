@@ -1,7 +1,7 @@
 import React from 'react';
 import { Text, ScrollView } from 'react-native';
 import { BaseBlock } from '../../interfaces/BaseBlock';
-import { styles } from './styles';
+import styles from './styles';
 
 export interface TitleProps extends BaseBlock {
     title: string;
