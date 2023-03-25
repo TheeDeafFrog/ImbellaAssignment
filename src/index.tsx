@@ -16,10 +16,14 @@ export default function RootComponent() {
         accessToken: 'xC7sv2LJmqH3mYQsjENw3Att'
     });
 
-    // TODO: check URL to determine starting id
+    const pathname = window?.location?.pathname || '/';
+    const slug = pathname === '/' ? '/home' : pathname;
+    if (window?.history) {
+        window.history.pushState({}, '', slug);
+    }
 
     const id = {
-        id: 'cdn/stories/home',
+        id: `cdn/stories${slug}`,
         idType: IdType.path,
     };
 
