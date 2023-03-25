@@ -10,9 +10,6 @@ export interface TitleProps extends BaseBlock {
 
 export function Title(props: TitleProps) {
     return <ScrollView>
-        <Text>
-            Something
-        </Text>
         <Text style={styles.title}>
             {props.title}
         </Text>

@@ -12,5 +12,5 @@ export const COMPONENT_MAP = {
 
 export default function mapBlockToComponent(content: BaseBlock) {
     const Component = COMPONENT_MAP[content.component];
-    return <Component {...content}/>;
+    return <Component {...content} key={content._uid}/>;
 }
