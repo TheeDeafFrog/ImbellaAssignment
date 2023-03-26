@@ -16,10 +16,10 @@ export interface ProductProps extends BaseBlock {
 
 export function Product(props: ProductProps) {
     return <View testID='product' style={styles.container}>
-        <Text variant="displayMedium">
+        <Text variant="displayMedium" style={styles.title}>
             {props.title}
         </Text>
-        <Text variant="titleLarge">
+        <Text variant="titleLarge" style={styles.subtitle}>
             {props.subtitle}
         </Text>
         <Surface

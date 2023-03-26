@@ -10,7 +10,7 @@ export default StyleSheet.create({
         height: 300,
         alignSelf: 'center',
         margin: 10,
-        borderRadius: 30
+        borderRadius: 30,
     },
     surface: {
         margin: 10,
@@ -18,5 +18,11 @@ export default StyleSheet.create({
     },
     text: {
         margin: 10,
-    }
+    },
+    title: {
+        marginLeft: 10,
+    },
+    subtitle: {
+        marginLeft: 10,
+    },
 });
