@@ -18,7 +18,6 @@
   },
   "dependencies": {
     "@expo/webpack-config": "^18.0.1",
-    "@jonasmerlin/react-native-markdown-display": "github:jonasmerlin/react-native-markdown-display",
     "@types/react": "~18.0.27",
     "expo": "~48.0.9",
     "expo-status-bar": "~1.4.4",
