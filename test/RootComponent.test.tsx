@@ -132,7 +132,7 @@ describe('Root Component', () => {
                 deferred.pop().resolve({data: SAMPLE_PRODUCT});
             });
 
-            const button = screen.getByTestId(SAMPLE_PRODUCT.story.content._uid);
+            const button = screen.getByTestId('product');
 
             fireEvent(button, 'click');
 
