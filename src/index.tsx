@@ -15,7 +15,6 @@ interface ClientResponse {
 
 export default function RootComponent(): React.ReactElement {
 
-
     let initialSlug;
     if (Platform.OS === 'web') {
         const pathname = window?.location?.pathname || '/';

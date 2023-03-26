@@ -8,7 +8,7 @@ export const COMPONENT_MAP = {
     GenericText: GenericText,
     Page: Page,
     Product: Product,
-    TopBar: TopBar,
+    Topbar: TopBar,
     Search: Search,
 };
 

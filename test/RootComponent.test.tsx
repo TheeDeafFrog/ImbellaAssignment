@@ -1,11 +1,11 @@
 /* eslint-disable @typescript-eslint/ban-ts-comment */
-import React from 'react';
-import {act, render, screen} from '@testing-library/react-native';
+import React, {useContext} from 'react';
+import {act, fireEvent, render, screen} from '@testing-library/react-native';
 import RootComponent from '../src';
 import StoryblokClient from 'storyblok-js-client';
-import { SAMPLE_STORY } from './sampleData';
-import { StoryblokClientContext } from '../contexts';
-import { Page } from '../src/stories';
+import { SAMPLE_HOME, SAMPLE_PRODUCT, SAMPLE_SIMPLE_HOME, SAMPLE_TOPBAR } from './sampleData';
+import { SlugContext, StoryblokClientContext } from '../contexts';
+import { Platform } from 'react-native';
 
 jest.mock('storyblok-js-client');
 
@@ -34,27 +34,28 @@ describe('Root Component', () => {
     };
 
     beforeAll(() => {
-        deferred = [];
-
         // @ts-ignore
         StoryblokClient.mockImplementation(() => {
             return {
                 get: getMocked
             };
         });
-        // @ts-ignore
-        window.history = {
-            pushState: pushStateMocked
-        };
 
         storyblokClient = new StoryblokClient({});
+
+        Platform.OS = 'web';
     });
 
     beforeEach(() => {
+        deferred = [];
         jest.clearAllMocks();
         // @ts-ignore
         window.location = {
             pathname: '/'
+        };
+        // @ts-ignore
+        window.history = {
+            pushState: pushStateMocked
         };
     });
 
@@ -62,7 +63,7 @@ describe('Root Component', () => {
         it('should use the client to request the story', () => {
             render(getComponent());
 
-            expect(getMocked).toHaveBeenCalledTimes(1);
+            expect(getMocked).toHaveBeenCalledTimes(2);
             expect(getMocked).lastCalledWith('cdn/stories/home', {version: 'published'});
         });
 
@@ -70,7 +71,7 @@ describe('Root Component', () => {
             render(getComponent());
 
             await act(() => {
-                deferred.pop().resolve({data: SAMPLE_STORY});
+                deferred.pop().resolve({data: SAMPLE_SIMPLE_HOME});
             });
 
             const page = screen.getByTestId('page');
@@ -100,7 +101,7 @@ describe('Root Component', () => {
 
             render(getComponent());
 
-            expect(getMocked).toHaveBeenCalledTimes(1);
+            expect(getMocked).toHaveBeenCalledTimes(2);
             expect(getMocked).lastCalledWith('cdn/stories/product/happiness', {version: 'published'});
         });
 
@@ -110,8 +111,34 @@ describe('Root Component', () => {
             render(getComponent());
 
             expect(window.history).toBe(undefined);
-            expect(getMocked).toHaveBeenCalledTimes(1);
+            expect(getMocked).toHaveBeenCalledTimes(2);
             expect(getMocked).lastCalledWith('cdn/stories/home', {version: 'published'});
+        });
+
+        it('should change the pathname when the slug is changed', async () => {
+            // @ts-ignore
+            window.location = {
+                pathname: '/'
+            };
+            
+            render(getComponent());
+
+            await act(() => {
+                deferred.pop().resolve({data: SAMPLE_HOME});
+                deferred.pop();
+            });
+
+            await act(() => {
+                deferred.pop().resolve({data: SAMPLE_PRODUCT});
+            });
+
+            const button = screen.getByTestId(SAMPLE_PRODUCT.story.content._uid);
+
+            fireEvent(button, 'click');
+
+            expect(pushStateMocked).toBeCalledTimes(2);
+            expect(pushStateMocked).toHaveBeenLastCalledWith({}, '', `/${SAMPLE_PRODUCT.story.full_slug}`);
+            expect(window.location.pathname).toBe(`/${SAMPLE_PRODUCT.story.full_slug}`);
         });
     });
 

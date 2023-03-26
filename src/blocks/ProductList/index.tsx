@@ -46,7 +46,7 @@ export function ProductList(props: ProductListProps) {
     }, [props.products]);
 
     if (loading) {
-        return <ActivityIndicator />;
+        return <ActivityIndicator testID='activity-indicator'/>;
     }
 
     return <ProductGrid productsStories={resolvedProducts} columns={props.columns} />;

@@ -17,7 +17,8 @@ export function ProductGrid(props: ProductGridProps) {
 
     const products = props.productsStories.map((productStory: Story) => {
         const product = productStory.content as ProductProps;
-        return <Card onPress={() => setSlug(`/${productStory.full_slug}`)} key={product._uid} style={styles.card}>
+        console.log(product._uid);
+        return <Card onPress={() => setSlug(`/${productStory.full_slug}`)} key={product._uid} style={styles.card} testID={product._uid}>
             <Card.Cover source={{uri: product.image.filename}} />
             <Card.Title title={product.title} subtitle={product.subtitle}/>
         </Card>;
@@ -37,7 +38,7 @@ export function ProductGrid(props: ProductGridProps) {
         </View>;
     });
 
-    return <View style={styles.cardContainer}>
+    return <View style={styles.cardContainer} testID='product-grid'>
         {rows}
     </View>;
 }
