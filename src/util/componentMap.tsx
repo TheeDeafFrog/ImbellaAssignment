@@ -1,6 +1,6 @@
 import { BaseBlock } from '../interfaces/BaseBlock';
 import { ProductList, GenericText } from '../blocks';
-import { Product, Page, TopBar } from '../stories';
+import { Product, Page, TopBar, Search } from '../stories';
 import React from 'react';
 
 export const COMPONENT_MAP = {
@@ -9,6 +9,7 @@ export const COMPONENT_MAP = {
     Page: Page,
     Product: Product,
     TopBar: TopBar,
+    Search: Search,
 };
 
 export default function mapBlockToComponent(content: BaseBlock) {

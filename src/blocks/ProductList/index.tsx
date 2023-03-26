@@ -5,7 +5,7 @@ import { IdType } from '../../interfaces/ComponentIdentification';
 import { Story } from '../../interfaces/Story';
 import { fetchComponent } from '../../util/fetchComponent';
 import { ActivityIndicator } from 'react-native-paper';
-import { ProductGrid } from '../../components/ProductGrid';
+import { ProductGrid } from '../../components/';
 
 interface ClientResponse {
     story: Story;

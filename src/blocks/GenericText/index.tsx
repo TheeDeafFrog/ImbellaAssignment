@@ -7,6 +7,8 @@ export interface GenericTextProps extends BaseBlock {
     variant: 'display' | 'headline' | 'title' | 'body' | 'label';
     size: 'small' | 'medium' | 'large';
     color?: string;
+    margin?: string;
+    justifySelf?: string;
 }
 
 export function GenericText(props: GenericTextProps) {
