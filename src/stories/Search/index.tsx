@@ -45,10 +45,6 @@ export function Search(props: SearchProps) {
         } else {
             setSearching(false);
         }
-
-        // setSearchBoxInput(query);
-        // setSearchQuery(query);
-        // setSearching(true);
     };
 
     return <View>
@@ -57,6 +53,7 @@ export function Search(props: SearchProps) {
             placeholder={props.placeholder}
             onChangeText={onChangeText}
             value={searchBoxInput}
+            testID='searchbox'
         />
         {searching ?
             <ActivityIndicator/> :
