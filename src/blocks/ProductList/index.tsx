@@ -7,6 +7,7 @@ import { fetchComponent } from '../../util/fetchComponent';
 import { ActivityIndicator, Card } from 'react-native-paper';
 import { ProductProps } from '../../stories/Product';
 import { View } from 'react-native';
+import styles from './styles';
 
 interface ClientResponse {
     story: Story;
@@ -15,6 +16,7 @@ interface ClientResponse {
 
 export interface ProductListProps extends BaseBlock {
     products: string[];
+    columns: number;
 }
 
 export function ProductList(props: ProductListProps) {
@@ -35,7 +37,7 @@ export function ProductList(props: ProductListProps) {
 
         Promise.allSettled(promises).then((results) => results.map((result) => {
             if (result.status === 'fulfilled') {
-                return (result.value as unknown as Story).content;
+                return (result.value as unknown as Story);
             }
             return null;
         })).then((intermediateProducts) => {
@@ -50,14 +52,29 @@ export function ProductList(props: ProductListProps) {
         return <ActivityIndicator />;
     }
 
-    const products = resolvedProducts.map((product: ProductProps) => {
-        return <Card onPress={() => setSlug(`/${product.full_slug}`)} key={product._uid}>
-            <Card.Title title={product.title} />
+    const products = resolvedProducts.map((productStory: Story) => {
+        const product = productStory.content as ProductProps;
+        return <Card onPress={() => setSlug(`/${productStory.full_slug}`)} key={product._uid} style={styles.card}>
             <Card.Cover source={{uri: product.image.filename}} />
+            <Card.Title title={product.title} subtitle={product.subtitle}/>
         </Card>;
     });
 
-    return <View>
-        {products}
+    const rows = products.reduce((accumulator, current, index) => {
+        if (index % 2) {
+            accumulator.push([current]);
+        } else {
+            accumulator[accumulator.length - 1].push(current);
+        }
+
+        return accumulator;
+    }, [[]]).map((row, index) => {
+        return <View style={styles.row} key={index}>
+            {row}
+        </View>;
+    });
+
+    return <View style={styles.cardContainer}>
+        {rows}
     </View>;    
 }

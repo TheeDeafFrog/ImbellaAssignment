@@ -53,10 +53,8 @@ export default function RootComponent(): React.ReactElement {
     };
 
     useEffect(() => {
-        if (story === null) {
-            fetchStory();
-        }
-    }, []);
+        fetchStory();
+    }, [slug]);
 
     if (storyblokBridgeInstance) {
         storyblokBridgeInstance.on('input', (event) => {

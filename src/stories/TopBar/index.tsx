@@ -49,10 +49,10 @@ export function TopBar(props: TopBarProps) {
         return;
     }
 
-    return <Appbar.Header>
+    return <Appbar.Header style={{backgroundColor: story.content.color}}>
         <Appbar.Content title={props.title}/>
         {story.content.navigationItems.map((navigationItem) => {
-            return <Appbar.Action icon={navigationItem.icon} onPress={setSlug(navigationItem.slug)} key={navigationItem._uid} />;
+            return <Appbar.Action icon={navigationItem.icon} onPress={() => setSlug(navigationItem.slug)} key={navigationItem._uid} />;
         })}
     </Appbar.Header>;
 }

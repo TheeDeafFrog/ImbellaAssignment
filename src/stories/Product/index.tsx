@@ -2,7 +2,6 @@ import React from 'react';
 import { View, Image } from 'react-native';
 import { Text } from 'react-native-paper';
 import { BaseBlock } from '../../interfaces/BaseBlock';
-import Markdown from '@jonasmerlin/react-native-markdown-display';
 
 export interface ProductProps extends BaseBlock {
     title: string;
@@ -27,9 +26,6 @@ export function Product(props: ProductProps) {
                 uri: props.image.filename
             }}
         />
-        {/* <Markdown>
-            {props.description}
-        </Markdown> */}
         <Text>
             {props.description}
         </Text>
