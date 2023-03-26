@@ -24,7 +24,7 @@ export function ProductGrid(props: ProductGridProps) {
     });
 
     const rows = products.reduce((accumulator, current, index) => {
-        if (index % 2) {
+        if (index % props.columns === 0) {
             accumulator.push([current]);
         } else {
             accumulator[accumulator.length - 1].push(current);
