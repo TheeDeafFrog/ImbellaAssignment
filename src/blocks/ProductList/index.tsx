@@ -6,6 +6,7 @@ import { Story } from '../../interfaces/Story';
 import { fetchComponent } from '../../util/fetchComponent';
 import { ActivityIndicator } from 'react-native-paper';
 import { ProductGrid } from '../../components/';
+import { View } from 'react-native';
 
 interface ClientResponse {
     story: Story;
@@ -49,5 +50,7 @@ export function ProductList(props: ProductListProps) {
         return <ActivityIndicator testID='activity-indicator'/>;
     }
 
-    return <ProductGrid productsStories={resolvedProducts} columns={props.columns} />;
+    return <View testID='product-list'>
+        <ProductGrid productsStories={resolvedProducts} columns={props.columns}/>
+    </View>;
 }

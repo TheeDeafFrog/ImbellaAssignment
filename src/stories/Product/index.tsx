@@ -16,10 +16,10 @@ export interface ProductProps extends BaseBlock {
 
 export function Product(props: ProductProps) {
     return <View testID='product' style={styles.container}>
-        <Text variant="displayMedium" style={styles.title}>
+        <Text variant="displayMedium" style={styles.title} testID='title'>
             {props.title}
         </Text>
-        <Text variant="titleLarge" style={styles.subtitle}>
+        <Text variant="titleLarge" style={styles.subtitle} testID='subtitle'>
             {props.subtitle}
         </Text>
         <Surface
@@ -30,9 +30,11 @@ export function Product(props: ProductProps) {
                     uri: props.image.filename
                 }}
                 style={styles.image}
+                testID='image'
             />
             <Text
                 style={styles.text}
+                testID='description'
             >
                 {props.description}
             </Text>
