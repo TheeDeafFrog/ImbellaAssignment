@@ -1,6 +1,8 @@
 # ImbellaAssignment
 Assignment completed for Imbella as part of hiring interview process. It's a simple storefront that sells emotions and character attributes. It's built using React Native and the content is managed on and provided by [Storyblok](https://www.storyblok.com/).
 
+Thanks to Bing AI for the short stories and images.
+
 ## Running the app
 `npm start` to open the expo interface. Use `w` to start the web server, otherwise scan the URL with Expo Go and experiment on your phone.
 
