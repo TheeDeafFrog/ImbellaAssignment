@@ -23,3 +23,10 @@ Storyblok is a headless CMS. Essentially the content the content that is display
 * **Map Function**: the [mapBlockToComponent](./src/util/componentMap.tsx) function takes the string name of a component (provided by the response from Storyblok) and maps it to the correct local component.
 * **The Storyblok Bridge**: Storyblok displays the website in an iFrame as its being edited. The Storyblok Bridge allows the editor to communicate with the page, so when content is changed, the iFrame can be automatically refreshed.
   * *Improvement*: Storyblok also provides `_editable` keys in it's response, these should be added as HTML comments above the component for the storyblok UI to allow components to be clicked on within the iFrame to provide additional options. React does't directly provide the ability to insert HTML comments, and I didn't have the time to stuff around with DOM manipulation to get them inserted.
+
+## Demo
+[This commit (4ed12205535fa3e0fa7bc8fe99b9db16c50e0d70)](https://github.com/TheeDeafFrog/ImbellaAssignment/commit/4ed12205535fa3e0fa7bc8fe99b9db16c50e0d70) shows how easy it is to add a block for a button, which when clicked on will change the slug. The slug to change to is defined by Storyblok, where the story for the slug is also defined. The attributes for the block defined in Storyblok must match the props for the component/block in the codebase. And that's it.
+
+Because of the generic Page story which is used for the home page, we can now easily add a button to the home page in the Storyblok UI and then also create a new generic page entirely in the Storyblok UI which can also have a button to link back home.
+
+We can also easily add a link to the about page in the top appbar by the same setup, simply adding a button where it will set the slug to the about page.
