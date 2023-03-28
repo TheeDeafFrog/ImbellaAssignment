@@ -17,7 +17,7 @@ export interface SearchProps extends BaseBlock {
 export function Search(props: SearchProps) {
 
     const [searchQuery, setSearchQuery] = useState<string>('');
-    const [searchBoxInput, setSearchBoxInput] = useState<string>('');
+    const [searchBarInput, setSearchBarInput] = useState<string>('');
     const [typingTimer, setTypingTimer] = useState(null);
     const [searching, setSearching] = useState<boolean>(false);
     const [productStories, setProductStories] = useState<Story[]>([]);
@@ -37,7 +37,7 @@ export function Search(props: SearchProps) {
     }, [searchQuery]);
 
     const onChangeText = (query: string) => {
-        setSearchBoxInput(query);
+        setSearchBarInput(query);
         clearTimeout(typingTimer);
         if (query !== '') {
             setSearching(true);
@@ -49,11 +49,11 @@ export function Search(props: SearchProps) {
 
     return <View>
         <Searchbar
-            style={styles.searchbox}
+            style={styles.searchbar}
             placeholder={props.placeholder}
             onChangeText={onChangeText}
-            value={searchBoxInput}
-            testID='searchbox'
+            value={searchBarInput}
+            testID='searchbar'
         />
         {searching ?
             <ActivityIndicator/> :
